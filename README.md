@@ -13,6 +13,7 @@ track how far they are and provide recommendations accordingly.
     - Run the application(By default it will run at port:9595)
 
 2. Then get the code from this GitHub repository on your system. You can clone this repository or download as zip file.
+3. Create database called pcv_db in MySQL.
 
 ## Technologies Used-
     - Spring Boot, Maven, Mysql, Thymeleaf & Bootstrap
