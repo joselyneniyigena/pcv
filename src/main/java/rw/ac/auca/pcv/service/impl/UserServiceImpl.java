@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 		} else {
 			boolean isADoctor = Boolean.FALSE;
 			Optional<Doctor> doctorOptional = Optional.ofNullable(doctorService.findDoctorByCode(user.getDocCode()));
-			if(!user.getDocCode().isEmpty()){
+			if(user.getDocCode()!=null && user.getDocCode().isEmpty()){
 				if(!doctorOptional.isPresent()){
 					throw new Exception("Code Provide Not Found");
 				}

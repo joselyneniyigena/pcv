@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header">
+<title>Page titles</title>
+</head>
+
+    <body class="page-login">
+     	      <main class="page-content">
+            <div class="page-inner">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-4 center">
+                            <h1 class="text-xxl text-primary text-center">403</h1>
+                            <div class="details">
+                                <h3>Oops ! Access is denied</h3>
+                                <p>You are not authorized to access this page. <a th:href="@{/dashboard}">Home</a> </p>
+                            </div>
+                        </div>
+                    </div><!-- Row -->
+                </div><!-- Main Wrapper -->
+            </div><!-- Page Inner -->
+        </main><!-- Page Content -->
+        
+        <div th:replace="common/header :: body-bottom-scripts" ></div>
+       
+    </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header">
+<title>Page titles</title>
+</head>
+
+<body>
+	<div class="overlay"></div>
+	<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right"
+		id="cbp-spmenu-s1">
+		<h3>
+			<span class="pull-left">Chat</span><a href="javascript:void(0);"
+				class="pull-right" id="closeRight"><i class="fa fa-times"></i></a>
+		</h3>
+		<div class="slimscroll"></div>
+	</nav>
+
+	<main class="page-content content-wrap">
+	<div th:replace="common/header :: common-navbar" class="navbar"></div>
+	<!-- Navbar -->
+
+	<div th:replace="common/header :: common-sidebar"></div>
+	<!-- Sidebar -->
+
+	<div class="page-inner">
+		<div class="page-title">
+			<h3>HOME</h3>
+			<div class="page-breadcrumb">
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li class="active">Dashboard</li>
+				</ol>
+			</div>
+		</div>
+		<div id="main-wrapper">
+			<div class="row">
+
+
+				<div class="col-lg-5 col-md-6" th:each="list :${doctorList}">
+					<div class="panel info-box panel-white">
+						
+						<div class="panel-body">
+							<div class="info-box-stats">
+
+								<p> <span th:text="${list.firstName +' '+ list.lastName}"></span></p>
+								<span class="info-box-title"> Registered as <span th:text="${list.specialization}"></span></span>
+								
+							</div>
+							<a href="javascript:void(0);" data-toggle="tooltip"
+								data-placement="top" title="Refresh" class="panel-reload"><i
+								class="icon-reload"></i></a>
+							<div class="info-box-icon">
+								<i class="fa fa-folder-open"></i>
+							</div>	
+							<div class="info-box-progress">
+								<div class="progress progress-xs progress-squared bs-n">
+									<div class="progress-bar progress-bar-success"
+										role="progressbar" aria-valuenow="40" aria-valuemin="0"
+										aria-valuemax="100" style="width: 40%"></div>
+
+								</div>
+							</div>
+						
+
+							<div class="weather-widget">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="weather-top">
+											<h3 style="float: right"  th:text="${list.email}">
+											</h3> <h3 style="float: right">Email: &nbsp; </h3>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<ul class="list-unstyled weather-info">
+											<li>Phone <span class="pull-right" th:text="${list.phoneNumber}"><b> </b></span></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	</main>
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+</body>
+</html>
+

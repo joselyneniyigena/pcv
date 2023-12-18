@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header">
+<title>Page titles</title>
+</head>
+
+<body class="page-login">
+	<main class="page-content">
+	<div class="page-inner">
+		<div id="main-wrapper">
+			<div class="row">
+
+				<div class="col-md-3 center">
+
+					<div class="panel panel-white">
+						<div class="panel-body">
+							<div class="login-box">
+
+								<p class="text-center m-t-md">Please login into your
+									account.</p>
+
+								<div th:if="${param.errors}" class="alert alert-danger"
+									id="success-alert">
+									<strong>OOPS! </strong> Invalid username or password.
+								</div>
+								<form class="m-t-md" method="post" th:action="@{/index}">
+									<div class="form-group">
+										<input type="text" name="username" class="form-control"
+											placeholder="Username" />
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" class="form-control"
+											placeholder="Password" />
+									</div>
+									<label> <input type="checkbox" name="remember-me"
+										id="remember-me" />Remember me
+									</label> <input type="hidden" name="${_csrf.parameterName}"
+										value="${_csrf.token}" />
+									<button type="submit" class="btn btn-success btn-block">Login</button>
+									<a th:href="@{/forgot}"
+										class="display-block text-center m-t-md text-sm">Forgot
+										Password?</a>
+									<p class="text-center m-t-xs text-sm">Do not have an
+										account?</p>
+									<a th:href="@{/signup}"
+										class="btn btn-default btn-block m-t-md">Create account</a>
+									<a th:href="@{/doctor-signup}"
+									   class="btn btn-default btn-block m-t-md">Doctor Signup</a>
+									</form>
+								<p class="text-center m-t-xs text-sm"></p>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<br /> <br />
+			<!-- Row -->
+		</div>
+		<!-- Main Wrapper -->
+	</div>
+	<!-- Page Inner --> </main>
+	<!-- Page Content -->
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+
+</body>
+</html>
+

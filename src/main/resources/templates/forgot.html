@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header (pageTitle='LMS &copy; Resset Password')">
+    <title>Page titles</title>
+</head>
+
+<body class="page-forgot">
+	<main class="page-content">
+	<div class="page-inner">
+		<div id="main-wrapper">
+			<div class="row">
+				<div class="col-md-3 center">
+					<div class="panel panel-white">
+						<div class="panel-body">
+							<div class="login-box">
+								<a th:href="@{/index}" class="logo-name text-lg text-center">PCV</a>
+								<hr/>
+								<p class="text-center m-t-md">Enter your e-mail address
+									below to reset your password</p>
+								<div th:if="${accountExists}" class="alert alert-success"
+									id="success-alert">
+									<button type="button" class="close" data-dismiss="alert">x</button>
+									<strong>Success! </strong> Password has been sent to your email
+									account.
+								</div>
+								<div th:if="${accountNotExists}" class="alert alert-danger"
+									id="success-alert">
+									<button type="button" class="close" data-dismiss="alert">x</button>
+									<strong>OOPS! </strong> Account not exists.
+								</div>
+
+								<form class="m-t-md" method="post" th:action="@{/forgot}">
+									<div class="form-group">
+										<input type="email" name="email" class="form-control"
+											placeholder="Email" required="required" />
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">Submit</button>
+									<a th:href="@{/index}" class="btn btn-default btn-block m-t-md">Back</a>
+								</form>
+								<p class="text-center m-t-xs text-sm">2023 &copy; PCV.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Row -->
+		</div>
+		<!-- Main Wrapper -->
+	</div>
+	<!-- Page Inner --> </main>
+	<!-- Page Content -->
+
+
+
+
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+
+	<script>
+		$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+			$("#success-alert").slideUp(500);
+		});
+	</script>
+</body>
+</html>
+

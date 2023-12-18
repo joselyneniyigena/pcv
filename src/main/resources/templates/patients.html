@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header">
+    <title>Page titles</title>
+</head>
+
+
+<body>
+<div class="overlay"></div>
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right"
+     id="cbp-spmenu-s1"></nav>
+<main class="page-content content-wrap">
+
+    <div th:replace="common/header :: common-navbar" class="navbar"></div>
+    <!-- Navbar -->
+
+    <div th:replace="common/header :: common-sidebar"></div>
+    <!-- Sidebar -->
+
+    <div class="page-inner">
+        <div class="page-title">
+            <h3>PCV Care</h3>
+            <div class="page-breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="#">View</a></li>
+                    <li class="active">Patients</li>
+                </ol>
+            </div>
+        </div>
+        <div id="main-wrapper" th:fragment="body-doctor">
+            <div class="row">
+                <div class="col-md-9">
+
+
+                    <div class="col-md-12">
+                        <div class="panel panel-white">
+                            <div class="panel-heading clearfix">
+                                <h4 class="panel-title">Patient List</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="">
+                                            <table id="example" class="display table"
+                                                   style="width: 100%; cellspacing: 0;">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Date Of Birth</th>
+                                                    <th>Email</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Marital Status</th>
+                                                    <th>Insurance</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="patient : ${patients}">
+                                                    <td th:text="${patient.id}"></td>
+                                                    <td th:text="${patient.firstName}"></td>
+                                                    <td th:text="${patient.lastName}"></td>
+                                                    <td th:text="${#dates.format(patient.dateOfBirth, 'dd-MMM-yyyy')}"></td>
+                                                    <td th:text="${patient.email}"></td>
+                                                    <td th:text="${patient.phoneNumber}"></td>
+                                                    <td th:text="${patient.maritalStatus}"></td>
+                                                    <td th:text="${patient.insurance}"></td>
+                                                    <td>
+                                                        <div class="btn-group m-b-sm">
+                                                            <button type="button"
+                                                                    class="btn btn-primary dropdown-toggle"
+                                                                    data-toggle="dropdown" aria-expanded="false">
+                                                                Action <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li><a href="#" data-toggle="modal">Edit</a></li>
+                                                                <li><a href="#">Delete</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="well col-md-3">
+                    <div class="panel panel-white">
+                        <div class="panel-heading clearfix">
+                            <h4 class="panel-title">Upcoming appointments</h4>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="table-responsive">
+
+                                <table id="example9" class="display table"
+                                       style="width: 100%; cellspacing: 0;">
+                                    <thead>
+                                    <tr>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <p class="no-s">N. Joselyne, 2023 &copy; PCV Care</p>
+        </div>
+    </div>
+    <!-- Page Inner --> </main>
+<!-- Page Content -->
+
+<div class="cd-overlay"></div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+<!--Start of Tawk.to Script-->
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    $('#datepicker').datepicker({
+        daysOfWeekDisabled: [0, 6],
+        autoclose: true,
+    });
+
+    /*]]>*/
+</script>
+
+
+</body>
+
+
+</html>

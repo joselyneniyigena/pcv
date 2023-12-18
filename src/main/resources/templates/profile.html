@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header">
+<title>Profile</title>
+</head>
+
+<body>
+	<div class="overlay"></div>
+
+	<main class="page-content content-wrap">
+	<div th:replace="common/header :: common-navbar" class="navbar"></div>
+	<!-- Navbar -->
+
+	<div th:replace="common/header :: common-sidebar"></div>
+	<!-- Sidebar --> <!-- Page Sidebar -->
+	<div class="page-inner">
+		<!-- 		<div class="profile-cover"> -->
+		<!-- 			<div class="row"></div> -->
+		<!-- 		</div> -->
+		<div id="main-wrapper">
+
+			<div class="row">
+
+				<div class="col-md-3 user-profile">
+
+					<p class="text-center">
+						<span th:text="${role}"></span>
+					</p>
+					<hr />
+
+					<hr />
+
+				</div>
+				<div class="col-md-6 m-t-lg">
+					<div class="panel panel-white">
+						<div class="panel-body">
+							<p class="text-center m-t-md">Edit Profile</p>
+							<div th:if="${param.upload}" id="success-alert"
+								class="alert alert-danger alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+							</div>
+							<div th:if="${param.saved}" id="success-alert"
+								class="alert alert-success alert-dismissible" role="alert">
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+								<strong>Success </strong><span th:text="${msg}">Better
+									check yourself, you're not looking too good.</span>
+
+							</div>
+							<form class="form-horizontal" method="post"
+								th:action="@{/profile/edit}" th:object="${user}">
+								<div class="form-group">
+
+									<input type="text" class="form-control"
+										th:value="${user.fname}" name="fname" id="fname"
+										placeholder="First Name" />
+										<span class="text-danger"
+											th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}">First name
+											error</span>
+								</div>
+
+								<div class="form-group">
+
+									<input type="text" class="form-control"
+										th:value="${user.lname}" name="lname" id="lname"
+										placeholder="Last Name" />
+										<span class="text-danger"
+											th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}">last name
+											error</span>
+								</div>
+
+								<div class="form-group">
+
+									<input type="text" class="form-control"
+										th:value="${user.address}" name="address" id="inputLname"
+										placeholder="Address" />
+
+								</div>
+
+								<div class="form-group">
+
+									<input type="text" class="form-control"
+										th:value="${user.phone}" name="phone" id="phone"
+										placeholder="Phone number" />
+										<span class="text-danger"
+											th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">phone
+											error</span>
+
+								</div>
+								<div class="form-group">
+									<input type="text" th:value="${user.email}"
+										class="form-control" name="email" id="email"
+										placeholder="Your new Email address" /><span class="text-danger"
+											th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email
+											error</span>
+								</div>
+
+								<input type="hidden" th:value="${user.id}" name="id" /> <input
+									type="hidden" th:value="${user.username}" name="username" />
+								<div class="form-group">
+									<input type="password" class="form-control" name="password"
+										id="password" placeholder="Your new password" /> <span class="text-danger"
+											th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password
+											error</span>
+
+								</div>
+								<div class="form-group">
+									<input type="password" class="form-control"
+										id="confirm_password" placeholder="Confirm password" /> <span
+										class="text-danger" th:if="${#fields.hasErrors('password')}"
+										th:errors="*{password}">password error</span>
+
+								</div>
+
+
+								<button type="submit" class="btn btn-success btn-block m-t-xs">Submit</button>
+							</form>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-3 m-t-lg">
+					<div class="panel panel-white">
+						<div class="panel-heading">
+							<div class="panel-title">Team</div>
+						</div>
+						<div class="panel-body">
+							<div class="team">
+								<div class="team-member">
+									<div class="online on"></div>
+									<img src="/images/avatar1.png" alt="" />
+								</div>
+								<div class="team-member">
+									<div class="online off"></div>
+									<img src="/images/avatar2.png" alt="" />
+								</div>
+								<div class="team-member">
+									<div class="online on"></div>
+									<img src="assets/images/avatar3.png" alt="" />
+								</div>
+								<div class="team-member">
+									<div class="online on"></div>
+									<img src="/images/avatar5.png" alt="" />
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel panel-white"></div>
+					<div class="panel panel-white"></div>
+				</div>
+			</div>
+		</div>
+		<div class="page-footer">
+			<p class="no-s">2023 &copy; PCV.</p>
+		</div>
+	</div>
+	<!-- Page Inner --> <!-- Page Inner --> </main>
+	<!-- Page Content -->
+
+	<div class="cd-overlay"></div>
+
+	<div th:fragment="body-bottom-scripts">
+		<!-- Javascripts -->
+
+		<script src="/plugins/jquery/jquery-2.1.4.min.js"></script>
+		<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+		<script src="/plugins/pace-master/pace.min.js"></script>
+		<script src="/plugins/jquery-blockui/jquery.blockui.js"></script>
+		<script src="/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="/plugins/switchery/switchery.min.js"></script>
+		<script src="/plugins/uniform/jquery.uniform.min.js"></script>
+		<script src="/plugins/waves/waves.min.js"></script>
+		<script src="/plugins/3d-bold-navigation/js/main.js"></script>
+		<script src="/plugins/jquery-mockjax-master/jquery.mockjax.js"></script>
+		<script src="/plugins/moment/moment.js"></script>
+		<script
+			src="/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js"></script>
+		<script src="/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+		<script src="/js/modern.min.js"></script>
+		<script src="/js/pages/profile.js"></script>
+
+		<script>
+			var password = document.getElementById("password"), confirm_password = document
+					.getElementById("confirm_password");
+
+			function validatePassword() {
+				if (password.value != confirm_password.value) {
+					confirm_password.setCustomValidity("Passwords Don't Match");
+				} else {
+					confirm_password.setCustomValidity('');
+				}
+			}
+
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+		</script>
+
+
+	</div>
+</body>
+</html>

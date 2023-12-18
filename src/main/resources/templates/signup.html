@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header" />
+
+<body class="page-register">
+	<main class="page-content">
+	<div class="page-inner">
+		<div id="main-wrapper">
+			<div class="row">
+				<div class="col-md-5 center">
+					<div class="panel panel-white">
+						<div class="panel-body">
+							<div class="login-box">
+								<a href="index.html" class="logo-name text-lg text-center">PCV</a>
+								<p class="text-center m-t-md">Create new account</p>
+								<div th:if="${bindingError}" class="alert alert-danger"
+									id="success-alert">
+									<strong>OOPS! </strong> Validation error.
+								</div>
+								<form class="form-horizontal" method="post"
+									th:action="@{/signup}" th:object="${user}">
+
+
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											th:value="${user.fname}" name="fname" required="required"
+											id="inputFname" placeholder="First Name" />
+											<span class="text-danger"
+											th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}">First name
+											error</span>
+
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											th:value="${user.lname}" name="lname" required="required"
+											id="inputLname" placeholder="Last Name" />
+											<span class="text-danger"
+											th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}">last name
+											error</span>
+
+									</div>
+
+									<div class="form-group">
+
+										<input type="email" class="form-control"
+											th:value="${user.email}" name="email" required="required"
+											id="inputEmail" placeholder="Email" /> <span
+											class="text-danger" th:if="${emailExists}">Email
+											already exists</span>
+											<span class="text-danger"
+											th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email
+											error</span>
+
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											th:value="${user.phone}" name="phone" id="inputPhone"
+											placeholder="Phone number" /> <span class="text-danger"
+											th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">phone
+											error</span>
+
+									</div>
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											th:value="${user.address}" name="address" id="inputPhone"
+											placeholder="Your Address" /> <span class="text-danger"
+											th:if="${#fields.hasErrors('address')}"
+											th:errors="*{address}">address error</span>
+
+									</div>
+
+									<div class="form-group">
+
+										<input type="text" class="form-control"
+											th:value="${user.username}" name="username"
+											required="required" id="inputUsername" placeholder="Username" />
+											<span class="text-danger"
+											th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username
+											error</span>
+										<span class="text-danger" th:if="${employeeNotExist}">Username
+											already exists</span>
+
+									</div>
+									<div class="form-group">
+
+										<input type="password" class="form-control"
+											th:value="${user.password}" name="password" id="password"
+											required="required"  placeholder="Password" />
+										<span class="text-danger"
+											th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password
+											error</span>
+									</div>
+
+
+
+									<div class="form-group">
+										<input type="password" class="form-control"
+											id="confirm_password" placeholder="Confirm password" /> <span
+											class="text-danger" th:if="${#fields.hasErrors('password')}"
+											th:errors="*{password}">password error</span>
+
+									</div>
+
+									<label> <input type="checkbox" required="required" />
+										Agree the terms and policy
+									</label>
+									<button type="submit" class="btn btn-success btn-block m-t-xs">Submit</button>
+									<p class="text-center m-t-xs text-sm">Already have an
+										account?</p>
+									<a th:href="@{/index}" class="btn btn-default btn-block m-t-xs">Login</a>
+								</form>
+								<p class="text-center m-t-xs text-sm">2023 &copy; PCV.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Row -->
+		</div>
+		<!-- Main Wrapper -->
+	</div>
+	<!-- Page Inner --> </main>
+	<!-- Page Content -->
+	<div th:fragment="body-bottom-scripts"></div>
+	<script>
+		var password = document.getElementById("password"), confirm_password = document
+				.getElementById("confirm_password");
+
+		function validatePassword() {
+			if (password.value != confirm_password.value) {
+				confirm_password.setCustomValidity("Passwords Don't Match");
+			} else {
+				confirm_password.setCustomValidity('');
+			}
+		}
+
+		password.onchange = validatePassword;
+		confirm_password.onkeyup = validatePassword;
+	</script>
+</body>
+</html>
+

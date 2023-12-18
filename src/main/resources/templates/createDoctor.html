@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://w3.org/1999/xhtml">
+<head>
+    <title>PCV</title>
+    <link
+            href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600'
+            rel='stylesheet' type='text/css'/>
+    <link th:href="@{/plugins/pace-master/themes/blue/pace-theme-flash.css}"
+          rel="stylesheet"/>
+    <link th:href="@{/plugins/uniform/css/uniform.default.min.css}"
+          rel="stylesheet"/>
+    <link th:href="@{/plugins/bootstrap/css/bootstrap.min.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/fontawesome/css/font-awesome.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/line-icons/simple-line-icons.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/offcanvasmenueffects/css/menu_cornerbox.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/waves/waves.min.css}" rel="stylesheet"
+          type="text/css"/>
+    <link th:href="@{/plugins/switchery/switchery.min.css}" rel="stylesheet"
+          type="text/css"/>
+    <link th:href="@{/plugins/3d-bold-navigation/css/style.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/slidepushmenus/css/component.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/fullcalendar/fullcalendar.min.css}"
+          rel="stylesheet" type="text/css"/>
+    <link th:href="@{/plugins/select2/css/select2.min.css}" rel="stylesheet"
+          type="text/css"/>
+    <link th:href="@{/plugins/datatables/css/jquery.datatables.min.css}"
+          rel="stylesheet"/>
+    <link
+            th:href="@{/plugins/datatables/css/jquery.datatables_themeroller.css}"/>
+    <!-- Theme Styles -->
+    <link th:href="@{/css/modern.min.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/themes/green.css}" class="theme-color"
+          rel="stylesheet" type="text/css"/>
+    <!-- <link th:href="@{/css/custom.css}" rel="stylesheet" type="text/css" /> -->
+
+
+    <link th:href="@{/css/component.css}" rel="stylesheet" type="text/css"/>
+    <!-- <link href="/plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet" -->
+    <!-- 	type="text/css" /> -->
+
+    <link th:href="@{/plugins/bootstrap-datepicker/css/datepicker3.css}"
+          rel="stylesheet" type="text/css"/>
+    <link
+            th:href="@{/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css}"
+            rel="stylesheet" type="text/css"/>
+
+    <script th:src="@{/plugins/3d-bold-navigation/js/modernizr.js}"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script> -->
+    <script th:src="@{/js/custom/Chart.min.js}"></script>
+
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css"
+          rel="stylesheet" type="text/css"/>
+    <script th:src="@{/plugins/jquery/jquery-2.1.4.min.js}"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet"
+          href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+
+    <script th:src="@{/js/jquery.tagsinput-revisited.js}"></script>
+    <link rel="stylesheet" th:href="@{/js/jquery.tagsinput-revisited.css}"/>
+    <title>Page titles</title>
+</head>
+
+<body>
+
+
+<div class="overlay"></div>
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right"
+     id="cbp-spmenu-s1"></nav>
+<main class="page-content content-wrap">
+
+    <div th:replace="common/header :: common-navbar" class="navbar"></div>
+    <!-- Navbar -->
+
+    <div th:replace="common/header :: common-sidebar"></div>
+    <!-- Sidebar -->
+
+    <div class="page-inner">
+        <div class="page-title">
+            <h3>PCV Care</h3>
+            <div class="page-breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="#">Create</a></li>
+                    <li class="active">Doctor</li>
+                </ol>
+            </div>
+        </div>
+        <div id="main-wrapper" th:fragment="body-doctor">
+            <div class="row">
+                <div class="col-md-9">
+
+                    <div class="col-md-12">
+                        <div class="panel panel-white">
+                            <div class="panel-body">
+                                <div id="rootwizard">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li th:if="${returnedstatus} == false" role="presentation"
+                                            class="active"><a href="#tab1" data-toggle="tab"><i
+                                                class="fa fa-user m-r-xs"></i>Doctor Registration</a></li>
+
+                                    </ul>
+
+                                    <div class="progress progress-sm m-t-sm">
+                                        <div class="progress-bar progress-bar-primary"
+                                             role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                             aria-valuemax="100" style="width: 0%"></div>
+                                    </div>
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade in" id="tab1">
+                                            <div class="row m-b-lg">
+
+                                                <div class="col-md-12">
+
+                                                    <div th:if="${param.regstatus}" id="success-alert"
+                                                         class="alert alert-success alert-dismissible"
+                                                         role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <strong>Success </strong><span th:text="${regMsg}">Action is done successfully.</span>
+
+                                                    </div>
+
+                                                    <div th:if="${param.regError}" id="alert-danger"
+                                                         class="alert alert-danger alert-dismissible" role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <strong>OOPS!! </strong><span th:text="${regMsg}">Something went wrong.</span>
+
+                                                    </div>
+                                                    <form th:action="@{/doctor/create}" th:object="${doctor}" method="post">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="firstName">First Name:</label>
+                                                            <input type="text" id="firstName" name="firstName"
+                                                                   class="form-control" th:value="*{firstName}"
+                                                                   required="required"/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="lastName">Last Name:</label>
+                                                            <input type="text" id="lastName" name="lastName"
+                                                                   class="form-control" th:value="*{lastName}"
+                                                                   required="required"/>
+                                                        </div>
+
+                                                        <div class="form-group col-md-6">
+                                                            <label for="dateOfBirth">Date of Birth:</label>
+                                                            <input required="required" th:value="*{dateOfBirth}"
+                                                                name="dateOfBirth" class="form-control date-picker"
+                                                                id="dateOfBirth" placeholder="Date from" />
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="specialization">Specialization:</label>
+                                                            <input type="text" id="specialization" name="specialization"
+                                                                   class="form-control" th:value="*{specialization}"/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="phoneNumber">Phone Number:</label>
+                                                            <input type="tel" id="phoneNumber" name="phoneNumber"
+                                                                   class="form-control" th:value="*{phoneNumber}"/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="email">Email:</label>
+                                                            <input type="email" id="email" name="email"
+                                                                   class="form-control" th:value="*{email}" required="required"/>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="description">Description</label>
+                                                            <textarea rows="4" id="description" name="description"
+                                                                      th:value="*{description}" required="required"
+                                                                      class="form-control" placeholder="Description..."></textarea>
+                                                        </div>
+                                                        <!-- [Include additional fields as needed, like Address] -->
+                                                        <button type="submit" style="float: right" class="btn btn-primary">Create Doctor
+                                                        </button>
+                                                    </form>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="page-footer">
+            <p class="no-s">2023 &copy; PCV Care</p>
+        </div>
+    </div>
+
+</main>
+
+<div class="cd-overlay"></div>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var list = /*[[${emailList}]]*/ 'email';
+    $(function () {
+
+        $('#form-tags-4').tagsInput({
+            'autocomplete': {
+                source: list
+            }
+        });
+
+    });
+
+    /*]]>*/
+</script>
+
+
+<!-- Javascripts -->
+
+
+<script th:src="@{/js/index.js}"></script>
+<script th:src="@{/plugins/pace-master/pace.min.js}"></script>
+<script th:src="@{/plugins/jquery-blockui/jquery.blockui.js}"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/jquery-slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/plugins/switchery/switchery.min.js}"></script>
+<script th:src="@{/plugins/uniform/jquery.uniform.min.js}"></script>
+<script th:src="@{/plugins/waves/waves.min.js}"></script>
+<script th:src="@{/plugins/3d-bold-navigation/js/main.js}"></script>
+<script th:src="@{/plugins/jquery-mockjax-master/jquery.mockjax.js}"></script>
+<script th:src="@{/plugins/moment/moment.js}"></script>
+
+<script th:src="@{/plugins/datatables/js/jquery.datatables.min.js}"></script>
+<script
+        th:src="@{/plugins/x-editable/bootstrap3-editable/js/bootstrap-editable.js}"></script>
+<script
+        th:src="@{/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+<script th:src="@{/js/modern.min.js}"></script>
+<script th:src="@{/js/pages/table-data.js}"></script>
+
+<script th:src="@{/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{/js/pages/form-select2.js}"></script>
+
+<script th:src="@{/js/custom/select2.min.js}"></script>
+
+<script type="text/javascript"
+        th:src="@{/js/custom/dataTables.buttons.min.js}">
+
+</script>
+<script type="text/javascript"
+        th:src="@{/js/custom/buttons.flash.min.js}">
+
+</script>
+
+
+</body>
+
+</html>
